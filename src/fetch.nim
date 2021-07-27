@@ -26,11 +26,6 @@ proc getDistro(): string =
   let pipe = "|"
   return execProcess(file & pipe & grepcmd & pipe & trcmd)
 
-proc getArch(): string =
-   let archval = execProcess("lscpu").lines().readLines(1)[0]
-   echo archval
-getArch()
-
 let outtable = {
   "host@user": hostuser & "\n",
   "distro": getDistro(),
