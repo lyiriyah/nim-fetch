@@ -4,7 +4,7 @@ import std/exitprocs
 enableTrueColors()
 
 let
-  hostuser = execProcess("hostname").strip(chars={'\n'}) & "@" & getEnv("USER")
+  hostuser = execProcess("echo $HOSTNAME").strip(chars={'\n'}) & "@" & getEnv("USER")
   cpuname = execProcess("lscpu | grep \"Model name\" | tr -s \" \" | awk '{for(i=3;i<=NF;++i)printf $i\"\"FS ; print \"\"}'")
   editor = getEnv("EDITOR")
   shell = execProcess("basename $(echo $SHELL)")
@@ -42,8 +42,6 @@ var outkeys = newSeq[string]()
 
 for k in keys(outtable):
   outkeys.add(k)
-
-let largestkey = max(outkeys.mapIt(it.len))
 
 for k, v in pairs(outtable):
     stdout.styledWrite(fgBlue, align(k, max(outkeys.mapIt(it.len))), resetStyle, " \u2502 ", v)
