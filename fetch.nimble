@@ -5,7 +5,7 @@ author        = "lyiriyah"
 description   = "Fetch in nim"
 license       = "GPL-3.0-or-later"
 srcDir        = "src"
-bin           = @["fetch"]
+bin           = @["nf"]
 
 
 # Dependencies
